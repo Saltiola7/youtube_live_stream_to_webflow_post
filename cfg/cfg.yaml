@@ -1,0 +1,15 @@
+youtube:
+  api_key: 
+  api_key_google: 
+  channel_id_: 
+
+webflow:
+  api_key: 
+  collection_id: 
+
+bunnycdn:
+  api_key: 
+  storage_zone: 
+
+app:
+  dl_path: 

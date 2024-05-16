@@ -1,0 +1,55 @@
+# YouTube to Webflow Synchronization Flow
+
+This project provides a Prefect flow to synchronize YouTube videos with Webflow CMS items. The flow fetches YouTube videos, checks if they exist in BunnyCDN, and then creates or updates Webflow CMS items accordingly.
+
+## Prerequisites
+
+- Python 3.7+
+- Prefect
+- Required API credentials and configurations
+
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
+
+2. Install the required Python packages:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+3. Set up your configuration file in `cfg/cfg.py`.
+
+## Configuration
+
+Ensure you have a configuration file `cfg/cfg.py` that provides necessary configurations such as API keys, paths, and other settings.
+
+## Running the Flow
+
+To run the YouTube to Webflow synchronization flow, execute the following command:
+    ```sh
+    python flow.py
+    ```
+
+## Flow Details
+
+The flow consists of the following main tasks:
+
+1. **Load Configurations**: Loads the necessary configurations from `cfg/cfg.py`.
+2. **Fetch YouTube Videos**: Fetches YouTube videos using the YouTube API.
+3. **Fetch Existing Webflow Items**: Retrieves existing items from Webflow CMS.
+4. **Process Videos**: For each video:
+    - Checks if the video exists in BunnyCDN.
+    - If not, downloads and uploads the video to BunnyCDN.
+    - Creates or updates the Webflow CMS item with the video details.
+
+## Logging
+
+The flow uses Python's `logging` module to log debug information. Ensure that logging is configured properly to capture these logs.
+
+## Additional Information
+
+For more details on the individual tasks and their implementations, refer to the `flow.py` file in the repository.

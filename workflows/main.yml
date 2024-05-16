@@ -1,0 +1,32 @@
+  name: Deploy to Raspberry Pi
+
+  on:
+    push:
+      branches:
+        - master
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Copy files to Raspberry Pi
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.RPI_HOST }}
+          username: ${{ secrets.RPI_USERNAME }}
+          key: ${{ secrets.RPI_SSH_KEY }}
+          port: 22
+          source: "."
+          target: "/path/to/target/directory/on/pi"
+      - name: Restart application
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.RPI_HOST }}
+          username: ${{ secrets.RPI_USERNAME }}
+          key: ${{ secrets.RPI_SSH_KEY }}
+          port: 22
+          script: |
+            cd /path/to/your/project/on/pi
+            # Command to restart your application, e.g.:
+            docker-compose down && docker-compose up -d

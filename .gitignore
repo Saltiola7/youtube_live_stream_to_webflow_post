@@ -1,0 +1,5 @@
+__pychache__
+.venv
+cfg/cfg_og.yaml
+docs
+temp
